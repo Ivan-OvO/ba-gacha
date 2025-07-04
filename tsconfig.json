@@ -1,0 +1,26 @@
+{
+    "extends": ["@vue/tsconfig/tsconfig.dom.json", "@tsconfig/node18/tsconfig.json"],
+    "exclude": ["src/**/__tests__/*"],
+    "compilerOptions": {
+        "composite": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "moduleResolution": "node",
+        "module": "ESNext",
+        "types": ["node"],
+        "lib": ["DOM", "DOM.Iterable"],
+    },
+    "include": [
+        "env.d.ts",
+        "src/**/*.vue",
+        "**/*.vue",
+        "src/**/*.ts",
+        "vite.config.*",
+        "vitest.config.*",
+        "cypress.config.*",
+        "nightwatch.conf.*",
+        "playwright.config.*"
+    ]
+}

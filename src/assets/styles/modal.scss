@@ -1,0 +1,190 @@
+.icon {
+    z-index: 10;
+
+    &.close {
+        position: absolute;
+        right: -50px;
+        height: 50px;
+        cursor: pointer;
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+}
+
+.modal-backdrop {
+    position: fixed;
+    @include hw-filled-screen;
+    @include display-center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.modal {
+    @include hw(30vw, 40vw);
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    box-shadow: 0 10px 6px -2px;
+    background:
+        url('/images/IntroBgRight.png') right bottom no-repeat,
+        rgb(242, 242, 242);
+    background-size: 80%;
+
+    .modal-header {
+        @include display-center;
+        height: 70px;
+        position: relative;
+        color: $black-shadow;
+        background: rgb(239, 242, 244);
+        background-size: contain;
+        border-radius: 10px 10px 0 0;
+        border-bottom: 1px solid rgb(218, 221, 220);
+        & > span:first-child {
+            border-bottom: 8px solid rgb(255, 244, 126);
+            @include font-big;
+            padding: 5px;
+        }
+        &::after {
+            content: '';
+            @include position(0, auto, auto, 0);
+            @include hw-filled;
+            background: url('/images/HeaderBg.png') no-repeat left top;
+            background-size: contain;
+        }
+        button {
+            margin-left: 8px;
+            height: 35px;
+            width: 35px;
+            background-color: $black-shadow;
+            border-radius: 5px;
+            border: 0 solid;
+            color: white;
+            font-size: x-large;
+        }
+    }
+    .modal-body {
+        @include display-center;
+        @include font(24px);
+        flex-direction: column;
+        height: 45%;
+        padding: 3%;
+        color: black;
+
+        &.modal-body--filled {
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+    .modal-footer {
+        @include hw(18%, 100%);
+        display: flex;
+        justify-content: space-evenly;
+        margin: 2.5vw 0 2.5vw 0;
+
+        .gacha-button {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 5px 5px -5px rgb(0 0 0/0.6);
+            @include skew;
+            @include display-center;
+            div {
+                @include noskew;
+                @include font-big;
+            }
+            &:active {
+                @include active;
+            }
+        }
+
+        .button-gray {
+            @include gacha-button($gray, '/images/ButtonGrayBg0.png', '/images/ButtonGrayBg1.png');
+        }
+
+        .button-blue {
+            @include gacha-button($blue, '/images/ButtonBlueBg0.png', '/images/ButtonBlueBg1.png');
+        }
+
+        .button-yellow {
+            @include gacha-button($golden, '/images/ButtonYellowBg0.png', '/images/ButtonYellowBg1.png');
+        }
+    }
+}
+
+.modal{
+    .gacha{
+        @include display-center;
+        flex-direction: column;
+    }
+    
+    .point {
+        @include hw(15%, 25%);
+        @include skew;
+        @include display-center;
+        border-radius: 10px;
+    
+        img {
+            @include position(auto, auto, auto, -2.5vw);
+            @include noskew;
+            width: 5vw;
+            z-index: 32;
+        }
+    
+        .num {
+            height: 2vw;
+            width: 30vw;
+            border: 2px solid $black-shadow;
+            @include display-center;
+            color: white;
+            background-color: $black-shadow;
+            border-radius: 5px;
+    
+            span {
+                @include font-regular;
+                @include noskew;
+            }
+        }
+    }
+}
+
+.modal{
+    .history  {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 100%;
+        @include hide-scrollbar;
+        .card {
+            @include display-center;
+            flex-direction: column;
+            margin: -20px 2px 0 2px;
+        }
+        .card > a {
+            @include display-center;
+            flex-direction: column;
+            padding: 0 15px;
+        }
+    }
+    $img-height: 10.3vw;
+    .char img {
+        height: $img-height;
+    }
+    .star {
+        position: relative;
+        bottom: -$img-height;
+        width: 100%;
+        height: 40px;
+        background-color: $black-shadow-opacity;
+        @include display-center;
+        img {
+            height: 25px;
+            opacity: 1;
+        }
+    }
+    .name {
+        @include font(1vw);
+        color: $black-shadow;
+        text-decoration: underline $golden-card;
+    }
+}

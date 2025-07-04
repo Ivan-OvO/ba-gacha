@@ -1,0 +1,149 @@
+@mixin display-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin hw($height, $width){
+    height: $height;
+    width: $width;
+}
+
+@mixin hw-filled {
+    @include hw(100%, 100%);
+}
+
+@mixin hw-filled-screen {
+    @include hw(100vh, 100vw);
+}
+
+@mixin position($top:auto, $right:auto, $bottom:auto, $left:auto, $position:absolute) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin skew {
+    transform: skewX(-10deg);
+    -webkit-transform: skewX(-10deg);
+}
+
+@mixin noskew {
+    transform: skewX(10deg);
+    -webkit-transform: skewX(10deg);
+}
+
+@mixin active {
+    transform: scale(0.95) skewX(-10deg);
+}
+
+// font
+
+@mixin font($size) {
+    font-size: $size;
+    font-weight: 700;
+    user-select:none;
+}
+
+@mixin font-big {
+    font-size: 1.7vw;
+    font-weight: 700;
+    user-select:none;
+}
+
+@mixin font-large {
+    font-size: 2.5vw;
+    font-weight: 700;
+    user-select:none;
+}
+
+@mixin font-heavy {
+    font-size: 1.1vw;
+    font-weight: 1400;
+    user-select:none;
+}
+
+@mixin font-regular {
+    font-size: 1.1vw;
+    font-weight: 700;
+    user-select:none;
+}
+
+@mixin font-light {
+    font-size: 1.1vw;
+    user-select:none;
+}
+
+// button
+
+@mixin gacha-button($color, $url0, $url1) {
+    width: 40%;
+    border-radius: 10px;
+    background: $color;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        background-size: contain;
+        z-index: -1;
+        @include hw-filled;
+    }
+
+    &::before {
+        @include position(-10px, auto, auto, -20px);
+        background: url($url0) left top no-repeat;
+        -webkit-filter: opacity(0.5);
+        filter: opacity(0.5);
+    }
+
+    &::after {
+        @include position(auto, -20px, -10px, auto);
+        background: url($url1) right bottom no-repeat;
+        -webkit-filter: opacity(0.5);
+        filter: opacity(0.5);
+    }
+
+    &:active {
+        @include active;
+    }
+}
+
+// scroll bar
+
+@mixin hide-scrollbar {
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE 和 Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// color
+
+$blue: rgb(119, 221, 255);
+$golden: rgb(245, 233, 75);
+$gray: rgb(220, 240, 246);
+
+$gray-card: rgb(222, 235, 240);
+$golden-card: rgb(255, 252, 158);
+$pink-card: rgb(246, 186, 213);
+
+$gray-shadow: rgb(0 0 0 / 33%);
+$golden-shadow: rgb(255 240 156);
+$pink-shadow: rgb(255 156 221 / 36%);
+
+$blue-light: rgb(219, 246, 251);
+$blue-main: rgb(169, 224, 244);
+
+$white-main: rgb(241, 251, 253);
+$white-border: rgb(205, 214, 218);
+
+$black-main: rgb(75, 112, 155);
+$black-shadow: rgb(45, 70, 99);
+$black-border: rgb(122 171 200/0.3);
+$black-shadow-opacity: rgb(45 70 99 / 85%);
